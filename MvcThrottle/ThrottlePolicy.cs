@@ -48,10 +48,12 @@ namespace MvcThrottle
 
         internal Dictionary<RateLimitPeriod, long> Rates { get; set; }
 
+        internal RateLimitCustom RateLimitCustom { get; set; }
+
         /// <summary>
         /// Configure default request limits per second, minute, hour or day
         /// </summary>
-        public ThrottlePolicy(long? perSecond, long? perMinute = null, long? perHour = null, long? perDay = null, long? perWeek = null)
+        public ThrottlePolicy(long? perSecond = null, long? perMinute = null, long? perHour = null, long? perDay = null, long? perWeek = null, RateLimitCustom rate = null)
         {
             EndpointType = EndpointThrottlingType.AbsolutePath;
             Rates = new Dictionary<RateLimitPeriod, long>();
@@ -60,6 +62,7 @@ namespace MvcThrottle
             if (perHour.HasValue) Rates.Add(RateLimitPeriod.Hour, perHour.Value);
             if (perDay.HasValue) Rates.Add(RateLimitPeriod.Day, perDay.Value);
             if (perWeek.HasValue) Rates.Add(RateLimitPeriod.Week, perWeek.Value);
+            if (rate != null) { RateLimitCustom = rate; }
         }
 
     }

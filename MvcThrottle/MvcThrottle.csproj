@@ -84,6 +84,7 @@
     <Compile Include="ThrottingAttributes.cs" />
     <Compile Include="ThrottleCounter.cs" />
     <Compile Include="ThrottleLogEntry.cs" />
+    <Compile Include="RateLimitCustom.cs" />
     <Compile Include="ThrottlePolicy.cs" />
     <Compile Include="ThrottlingFilter.cs" />
   </ItemGroup>
